@@ -1,31 +1,12 @@
-<mxfile host="app.diagrams.net" modified="2023-04-23T10:32:06.639Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="4c52_yGVacXTs7_VOXoU" version="21.2.1" type="github">
+<mxfile host="app.diagrams.net" modified="2023-04-23T14:15:06.592Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/112.0.0.0 Safari/537.36" etag="rOB7VlPzAu5M3WH1r8hS" version="21.2.1" type="github">
   <diagram name="Page-1" id="rEc_g9ZV-2-DfpjKz65_">
     <mxGraphModel dx="1242" dy="795" grid="0" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="kXNh_bkUfa6kGIj0hykt-3" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="kXNh_bkUfa6kGIj0hykt-1">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="277" y="235" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="kXNh_bkUfa6kGIj0hykt-4" value="/blog/&amp;lt;slug&amp;gt;" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="kXNh_bkUfa6kGIj0hykt-3">
-          <mxGeometry x="-0.225" relative="1" as="geometry">
-            <mxPoint x="8" as="offset" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="kXNh_bkUfa6kGIj0hykt-1" value="User" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" vertex="1" parent="1">
-          <mxGeometry x="111" y="203" width="30" height="60" as="geometry" />
-        </mxCell>
-        <mxCell id="kXNh_bkUfa6kGIj0hykt-6" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="kXNh_bkUfa6kGIj0hykt-10" target="kXNh_bkUfa6kGIj0hykt-11">
-          <mxGeometry relative="1" as="geometry">
-            <mxPoint x="397" y="235" as="sourcePoint" />
-            <mxPoint x="501" y="235" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
         <mxCell id="kXNh_bkUfa6kGIj0hykt-8" style="edgeStyle=orthogonalEdgeStyle;orthogonalLoop=1;jettySize=auto;html=1;rounded=1;" edge="1" parent="1" source="kXNh_bkUfa6kGIj0hykt-7" target="kXNh_bkUfa6kGIj0hykt-11">
           <mxGeometry relative="1" as="geometry">
-            <mxPoint x="561" y="265" as="targetPoint" />
+            <mxPoint x="550" y="289" as="targetPoint" />
           </mxGeometry>
         </mxCell>
         <mxCell id="kXNh_bkUfa6kGIj0hykt-9" value="Edits Github issue&lt;br&gt;to edit corresponding&lt;br&gt;Blog post" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="kXNh_bkUfa6kGIj0hykt-8">
@@ -34,13 +15,32 @@
           </mxGeometry>
         </mxCell>
         <mxCell id="kXNh_bkUfa6kGIj0hykt-7" value="Author" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;perimeterSpacing=0;gradientColor=none;" vertex="1" parent="1">
-          <mxGeometry x="315" y="300" width="30" height="60" as="geometry" />
+          <mxGeometry x="260" y="209" width="30" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kXNh_bkUfa6kGIj0hykt-14" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=1;exitY=0.75;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" edge="1" parent="1" source="kXNh_bkUfa6kGIj0hykt-10" target="kXNh_bkUfa6kGIj0hykt-11">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kXNh_bkUfa6kGIj0hykt-17" value="get_issues" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="kXNh_bkUfa6kGIj0hykt-14">
+          <mxGeometry x="-0.237" y="-1" relative="1" as="geometry">
+            <mxPoint x="-5" y="-1" as="offset" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="kXNh_bkUfa6kGIj0hykt-10" value="Next.js&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color);&quot;&gt;(static rendering&lt;/span&gt;&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;&lt;span style=&quot;border-color: var(--border-color);&quot;&gt;from issues content)&lt;/span&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
-          <mxGeometry x="277" y="205" width="120" height="60" as="geometry" />
+          <mxGeometry x="41" y="101" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kXNh_bkUfa6kGIj0hykt-15" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=1;entryY=0.25;entryDx=0;entryDy=0;" edge="1" parent="1" source="kXNh_bkUfa6kGIj0hykt-11" target="kXNh_bkUfa6kGIj0hykt-10">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="kXNh_bkUfa6kGIj0hykt-16" value="Pull all issues&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;and render a static&lt;br style=&quot;border-color: var(--border-color);&quot;&gt;page for each" style="edgeLabel;html=1;align=center;verticalAlign=middle;resizable=0;points=[];" vertex="1" connectable="0" parent="kXNh_bkUfa6kGIj0hykt-15">
+          <mxGeometry x="0.1407" y="-2" relative="1" as="geometry">
+            <mxPoint x="40" y="-2" as="offset" />
+          </mxGeometry>
         </mxCell>
         <mxCell id="kXNh_bkUfa6kGIj0hykt-11" value="github.com/issues/1" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
-          <mxGeometry x="502" y="205" width="120" height="60" as="geometry" />
+          <mxGeometry x="395" y="101" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="kXNh_bkUfa6kGIj0hykt-18" value="With this, all content&lt;br&gt;can be generated statically&lt;br&gt;at build time" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;" vertex="1" parent="1">
+          <mxGeometry x="20.5" y="172" width="161" height="55" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
