@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Footer renders as expected 1`] = `
+<div>
+  <footer>
+    <div
+      class="mt-16 flex flex-col items-center"
+    >
+      <div
+        class="mb-2 flex space-x-2 text-sm text-gray-500 dark:text-gray-400"
+      >
+        <a
+          href="/"
+        >
+          Maffin Blog
+        </a>
+        <div>
+          •
+        </div>
+        <div>
+          ©2023
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+`;

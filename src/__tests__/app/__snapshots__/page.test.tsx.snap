@@ -14,9 +14,48 @@ exports[`HomePage renders page with posts as expected 1`] = `
         A bit of
       </h1>
       <p
-        class="text-lg leading-7 text-gray-500"
+        class="overflow-hidden whitespace-nowrap font-mono text-lg leading-7 text-gray-500 animate-typing"
       >
-        everything travel, engineering and finance
+        <span>
+          everything
+           
+        </span>
+        <span
+          class="text-emerald-500"
+        >
+          <a
+            href="/tags/travel"
+          >
+            travel
+          </a>
+        </span>
+        <span>
+          ,
+           
+        </span>
+        <span
+          class="text-sky-500"
+        >
+          <a
+            href="/tags/engineering"
+          >
+            engineering
+          </a>
+        </span>
+        <span>
+           
+          and
+           
+        </span>
+        <span
+          class="text-orange-500"
+        >
+          <a
+            href="/tags/finance"
+          >
+            finance
+          </a>
+        </span>
       </p>
     </div>
     <ul

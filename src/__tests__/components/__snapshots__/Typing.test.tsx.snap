@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Typing renders as expected 1`] = `
+<div>
+  <p
+    class="overflow-hidden whitespace-nowrap font-mono text-lg leading-7 text-gray-500 animate-typing"
+  >
+    <span>
+      everything
+       
+    </span>
+    <span
+      class="text-emerald-500"
+    >
+      <a
+        href="/tags/travel"
+      >
+        travel
+      </a>
+    </span>
+    <span>
+      ,
+       
+    </span>
+    <span
+      class="text-sky-500"
+    >
+      <a
+        href="/tags/engineering"
+      >
+        engineering
+      </a>
+    </span>
+    <span>
+       
+      and
+       
+    </span>
+    <span
+      class="text-orange-500"
+    >
+      <a
+        href="/tags/finance"
+      >
+        finance
+      </a>
+    </span>
+  </p>
+</div>
+`;

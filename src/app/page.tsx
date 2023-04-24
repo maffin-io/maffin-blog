@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import Tag from '@/components/Tag';
+import Typing from '@/components/Typing';
 import { getPosts } from '@/app/api/getPosts';
 
 export default async function HomePage() {
@@ -12,9 +13,7 @@ export default async function HomePage() {
         <h1 className="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14">
           A bit of
         </h1>
-        <p className="text-lg leading-7 text-gray-500">
-          everything travel, engineering and finance
-        </p>
+        <Typing />
       </div>
       <ul className="divide-y divide-gray-200 dark:divide-gray-700">
         {posts.map((post) => {

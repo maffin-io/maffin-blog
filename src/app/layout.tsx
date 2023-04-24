@@ -5,12 +5,36 @@ import Link from 'next/link';
 import Logo from '@/assets/images/logo.png';
 import Footer from '@/components/Footer';
 import '@/css/globals.css';
-
-const inter = Inter({ subsets: ['latin'] });
+import GithubIcon from '@/components/GithubIcon';
 
 export const metadata = {
   title: 'Maffin Blog',
   description: 'A bit of everything engineering, travel and finance',
+  icons: {
+    icon: [
+      {
+        url: '/favicon/favicon-16x16.png',
+        sizes: '16x16',
+        type: 'image/png',
+      },
+      {
+        url: '/favicon/favicon-32x32.png',
+        sizes: '32x32',
+        type: 'image/png',
+      },
+    ],
+    apple: '/favicon/apple-touch-icon.png',
+
+  },
+  category: ['technology', 'travel', 'finance'],
+  openGraph: {
+    title: 'Maffin Blog',
+    description: 'A bit of everything engineering, travel and finance',
+    url: 'https://blog.maffin.io',
+    siteName: 'Maffin Blog',
+    locale: 'en-US',
+    type: 'website',
+  },
 };
 
 const headerNavLinks = [
@@ -26,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={inter.className}>
+      <body>
         <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
           <div className="flex h-screen flex-col justify-between">
             <header className="flex items-center justify-between py-10">
@@ -52,6 +76,7 @@ export default function RootLayout({
                     </Link>
                   ))}
                 </div>
+                <GithubIcon />
               </div>
             </header>
             {children}
