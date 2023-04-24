@@ -1,16 +1,11 @@
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 
 import BlogPage from '@/app/posts/[slug]/page';
+import * as postsApi from '@/app/api/getPosts';
 
-const mockListForRepo = jest.fn();
-jest.mock('octokit', () => ({
-  Octokit: jest.fn(() => ({
-    rest: {
-      issues: {
-        listForRepo: mockListForRepo,
-      },
-    },
-  })),
+jest.mock('@/app/api/getPosts', () => ({
+  __esModule: true,
+  ...jest.requireActual('@/app/api/getPosts'),
 }));
 
 /**
@@ -25,44 +20,27 @@ async function resolveComponent(Component: React.FunctionComponent, props: any) 
 
 describe('BlogPage', () => {
   beforeEach(() => {
-    mockListForRepo.mockResolvedValue({
-      data: [
-        {
-          title: 'My Blog Post',
-          body_html: '<div>Content</div>',
-        },
-      ]
-    });
+    jest.spyOn(postsApi, 'getPost').mockResolvedValue(null);
   });
 
   it('renders post with content and title', async () => {
-    const Component = await resolveComponent(BlogPage, { params: { slug: 'My-Blog-Post'}});
+    jest.spyOn(postsApi, 'getPost').mockResolvedValue({
+      content: '<div>Content</div>',
+      slug: 'my-blog-post',
+      summary: 'Blog post summary TODO',
+      tags: ['label1'],
+      title: 'My Blog Post',
+      date: 'Jan 1, 2023',
+    });
+    const Component = await resolveComponent(BlogPage, { params: { slug: 'My-Blog-Post' } });
     const { container } = render(<Component />);
 
     expect(container).toMatchSnapshot();
   });
 
-  /**
-   * This test checks against paths that are encoded by Next routing
-   */
-  it('finds post with encoded slug', async () => {
-    mockListForRepo.mockResolvedValue({
-      data: [
-        {
-          title: 'My Blog Post: Part 1',
-          body_html: '<div>Content</div>',
-        },
-      ]
-    });
-    const Component = await resolveComponent(BlogPage, { params: { slug: 'My-Blog-Post%3A-Part-1'}});
-    render(<Component />);
-
-    expect(screen.getByText('My Blog Post: Part 1').outerHTML).toEqual('<h1>My Blog Post: Part 1</h1>');
-  });
-
   it('returns 404 when slug not found', async () => {
     await expect(
-      () => resolveComponent(BlogPage, { params: { slug: 'My-Blog-Post%3A-Part-1'}}),
+      () => resolveComponent(BlogPage, { params: { slug: 'My-Blog-Post%3A-Part-1' } }),
     ).rejects.toThrow('NEXT_NOT_FOUND');
   });
 });
