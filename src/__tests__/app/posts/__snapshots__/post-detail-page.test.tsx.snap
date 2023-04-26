@@ -2,13 +2,156 @@
 
 exports[`BlogPage renders post with content and title 1`] = `
 <div>
-  <h1>
-    My Blog Post
-  </h1>
-  <div>
-    <div>
-      Content
+  <article>
+    <div
+      class="xl:divide-y xl:divide-gray-200 xl:dark:divide-gray-700"
+    >
+      <header
+        class="pt-6 xl:pb-6"
+      >
+        <div
+          class="space-y-1 text-center"
+        >
+          <dl
+            class="space-y-10"
+          >
+            <div>
+              <dt
+                class="sr-only"
+              >
+                Published on
+              </dt>
+              <dd
+                class="text-base font-medium leading-6 text-gray-500 dark:text-gray-400"
+              >
+                <time
+                  datetime="2023-01-01"
+                >
+                  Jan 1, 2023
+                </time>
+              </dd>
+            </div>
+          </dl>
+          <div>
+            <h1
+              class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 dark:text-gray-100 sm:text-4xl sm:leading-10 md:text-5xl md:leading-14"
+            >
+              My Blog Post
+            </h1>
+          </div>
+        </div>
+      </header>
+      <div
+        class="divide-y divide-gray-200 pb-8 dark:divide-gray-700 xl:grid xl:grid-cols-4 xl:gap-x-6 xl:divide-y-0"
+        style="grid-template-rows: auto 1fr;"
+      >
+        <dl
+          class="pt-6 pb-10 xl:border-b xl:border-gray-200 xl:pt-11 xl:dark:border-gray-700"
+        >
+          <dt
+            class="sr-only"
+          >
+            Author
+          </dt>
+          <dd>
+            <ul
+              class="flex justify-center space-x-8 sm:space-x-12 xl:block xl:space-x-0 xl:space-y-8"
+            >
+              <li
+                class="flex items-center space-x-2"
+              >
+                <img
+                  alt="avatar"
+                  class="h-10 w-10 rounded-full"
+                  data-nimg="1"
+                  decoding="async"
+                  height="38"
+                  loading="lazy"
+                  src="/_next/image?url=https%3A%2F%2Favatar.image&w=96&q=75"
+                  srcset="/_next/image?url=https%3A%2F%2Favatar.image&w=48&q=75 1x, /_next/image?url=https%3A%2F%2Favatar.image&w=96&q=75 2x"
+                  style="color: transparent;"
+                  width="38"
+                />
+                <dl
+                  class="whitespace-nowrap text-sm font-medium leading-5"
+                >
+                  <dt
+                    class="sr-only"
+                  >
+                    Name
+                  </dt>
+                  <dd
+                    class="text-gray-900 dark:text-gray-100"
+                  >
+                    Name
+                  </dd>
+                  <dt
+                    class="sr-only"
+                  >
+                    Twitter
+                  </dt>
+                </dl>
+              </li>
+            </ul>
+          </dd>
+        </dl>
+        <div
+          class="divide-y divide-gray-200 dark:divide-gray-700 xl:col-span-3 xl:row-span-2 xl:pb-0"
+        >
+          <div
+            class="prose prose-img:mx-auto max-w-none pt-10 pb-8 dark:prose-dark"
+          >
+            <div>
+              <div>
+                Content
+              </div>
+            </div>
+          </div>
+        </div>
+        <footer>
+          <div
+            class="divide-gray-200 text-sm font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y"
+          >
+            <div
+              class="py-4 xl:py-8"
+            >
+              <h2
+                class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400"
+              >
+                Tags
+              </h2>
+              <div
+                class="flex flex-wrap"
+              >
+                <a
+                  href="/tags/label1"
+                >
+                  <span
+                    class="mr-3 text-sm font-medium uppercase text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                  >
+                    label1
+                  </span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <div
+            class="divide-gray-200 font-medium leading-5 dark:divide-gray-700 xl:col-start-1 xl:row-start-2 xl:divide-y"
+          >
+            <div
+              class="pt-4 xl:pt-8"
+            >
+              <a
+                class="text-primary-500 hover:text-primary-600 dark:hover:text-primary-400"
+                href="/"
+              >
+                ← Back to the blog
+              </a>
+            </div>
+          </div>
+        </footer>
+      </div>
     </div>
-  </div>
+  </article>
 </div>
 `;
