@@ -1,10 +1,10 @@
-import { Inter } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
 
 import Logo from '@/assets/images/logo.png';
 import Footer from '@/components/Footer';
 import '@/css/globals.css';
+import '@fontsource/inter/variable-full.css';
 import GithubIcon from '@/components/GithubIcon';
 
 export const metadata = {
@@ -50,7 +50,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>
+      <body className="bg-white text-black antialiased dark:bg-gray-900 dark:text-white">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 xl:max-w-5xl xl:px-0">
           <div className="flex h-screen flex-col justify-between">
             <header className="flex items-center justify-between py-10">

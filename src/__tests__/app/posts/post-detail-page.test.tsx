@@ -1,3 +1,4 @@
+import { DateTime } from 'luxon';
 import { render } from '@testing-library/react';
 
 import BlogPage from '@/app/posts/[slug]/page';
@@ -29,8 +30,13 @@ describe('BlogPage', () => {
       slug: 'my-blog-post',
       summary: 'Blog post summary TODO',
       tags: ['label1'],
+      reading_time: '1 min',
       title: 'My Blog Post',
-      date: 'Jan 1, 2023',
+      date: DateTime.fromISO('2023-01-01'),
+      author: {
+        name: 'Name',
+        avatar: 'https://avatar.image',
+      },
     });
     const Component = await resolveComponent(BlogPage, { params: { slug: 'My-Blog-Post' } });
     const { container } = render(<Component />);

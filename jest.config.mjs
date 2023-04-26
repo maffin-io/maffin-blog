@@ -27,5 +27,9 @@ const config = {
   },
 }
 
-// createJestConfig is exported this way to ensure that next/jest can load the Next.js config which is async
-export default createJestConfig(config)
+// https://github.com/vercel/next.js/issues/35634
+export default async function jestConfig() {
+  const nextJestConfig = await createJestConfig(config)()
+  nextJestConfig.transformIgnorePatterns[0] = '/node_modules/(?!remark)/'
+  return nextJestConfig
+}

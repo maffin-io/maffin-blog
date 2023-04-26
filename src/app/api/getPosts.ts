@@ -1,65 +1,56 @@
 import { DateTime } from 'luxon';
 import { Octokit } from 'octokit';
-import slugify from 'slugify';
 
-function toSlug(str: string) {
-  return slugify(str).toLowerCase();
-}
+import markdownToHtml from '@/lib/markdownToHtml';
 
 export type Post = {
   slug: string,
-  date: string,
+  date: DateTime,
   title: string,
   summary: string,
+  reading_time: string,
   tags: string[],
   content: string,
+  author: {
+    name?: string,
+    avatar?: string,
+  },
 };
 
 export async function getPosts(): Promise<Post[]> {
   const octokit = new Octokit();
-  const issues = await octokit.rest.issues.listForRepo({
+  const issues = (await octokit.rest.issues.listForRepo({
     owner: 'maffin-io',
     repo: 'maffin-blog',
     creator: 'argaen',
     headers: {
       accept: 'application/vnd.github+json',
     },
-  });
+  })).data.filter((issue) => !issue.pull_request);
 
-  return issues.data.map((issue) => ({
-    slug: toSlug(issue.title),
-    date: DateTime.fromISO(issue.created_at).toLocaleString(DateTime.DATE_MED),
-    title: issue.title,
-    summary: 'Blog post summary TODO',
-    tags: issue.labels.map((label) => label.name),
-    content: issue.body || 'Post without content',
+  return Promise.all(issues.map(async (issue) => {
+    if (!issue.body) {
+      throw new Error(`Missing body in issue ${issue.title}`);
+    }
+
+    const { content: htmlContent, metadata } = await markdownToHtml(issue.body);
+    return {
+      slug: metadata.slug,
+      date: DateTime.fromISO(issue.created_at),
+      title: issue.title,
+      summary: metadata.summary,
+      reading_time: metadata.reading_time,
+      tags: issue.labels.map((label) => label.name),
+      content: htmlContent,
+      author: {
+        name: issue.user?.name || issue.user?.login,
+        avatar: issue.user?.avatar_url,
+      },
+    };
   }));
 }
 
 export async function getPost(slug: string): Promise<null | Post> {
-  const octokit = new Octokit();
-  const issues = await octokit.rest.issues.listForRepo({
-    owner: 'maffin-io',
-    repo: 'maffin-blog',
-    creator: 'argaen',
-    headers: {
-      accept: 'application/vnd.github.html+json',
-    },
-  });
-
-  let post: Post | null = null;
-  issues.data.forEach((issue) => {
-    if (toSlug(issue.title) === decodeURIComponent(slug)) {
-      post = {
-        slug: toSlug(issue.title),
-        date: DateTime.fromISO(issue.created_at).toLocaleString(DateTime.DATE_MED),
-        title: issue.title,
-        summary: 'Blog post summary TODO',
-        tags: issue.labels.map((label) => label.name),
-        content: issue.body_html || 'Post without content',
-      };
-    }
-  });
-
-  return post;
+  const posts = await getPosts();
+  return posts.find((post) => post.slug === slug) || null;
 }
