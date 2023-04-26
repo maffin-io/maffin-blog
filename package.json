@@ -1,5 +1,6 @@
 {
   "name": "maffin-blog",
+  "homepage": "https://blog.maffin.io",
   "version": "0.1.0",
   "private": true,
   "scripts": {

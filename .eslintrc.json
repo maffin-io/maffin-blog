@@ -18,5 +18,9 @@
         "src/**/*.test.ts?(x)"
       ]
     }
-  ]
+  ],
+  "rules": {
+    "arrow-parens": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
+  }
 }

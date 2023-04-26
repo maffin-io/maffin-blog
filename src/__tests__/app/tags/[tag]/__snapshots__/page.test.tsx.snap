@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagPage renders post with content and title 1`] = `
+<div>
+  <div
+    class="divide-y divide-gray-200"
+  >
+    <div
+      class="space-y-2 pt-6 pb-8 md:space-y-5"
+    >
+      <h1
+        class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14"
+      >
+        <a
+          href="/tag/{tag}"
+        >
+          #
+          label1
+        </a>
+      </h1>
+    </div>
+    <div
+      class="PostsList"
+      data-props="with-2-posts"
+    />
+  </div>
+</div>
+`;
+
+exports[`TagPage renders with no posts 1`] = `
+<div>
+  <div
+    class="divide-y divide-gray-200"
+  >
+    <div
+      class="space-y-2 pt-6 pb-8 md:space-y-5"
+    >
+      <h1
+        class="text-3xl font-extrabold leading-9 tracking-tight text-gray-900 sm:text-4xl sm:leading-10 md:text-6xl md:leading-14"
+      >
+        <a
+          href="/tag/{tag}"
+        >
+          #
+          label1
+        </a>
+      </h1>
+    </div>
+    <div
+      class="PostsList"
+      data-props="with-0-posts"
+    />
+  </div>
+</div>
+`;

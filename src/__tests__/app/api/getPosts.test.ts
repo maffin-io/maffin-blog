@@ -1,6 +1,6 @@
 import { DateTime } from 'luxon';
 
-import { getPosts, getPost } from '@/app/api/getPosts';
+import { getPosts, getPostsByTag, getPost } from '@/app/api/getPosts';
 
 const mockListForRepo = jest.fn();
 jest.mock('octokit', () => ({
@@ -51,9 +51,9 @@ describe('getPosts', () => {
   });
 
   it('returns posts with expected data', async () => {
-    const issues = await getPosts();
+    const posts = await getPosts();
 
-    expect(issues).toEqual([
+    expect(posts).toEqual([
       {
         content: '<div>Content</div>',
         reading_time: '1 min',
@@ -112,15 +112,15 @@ describe('getPosts', () => {
       ],
     });
 
-    const issues = await getPosts();
-    expect(issues).toEqual([]);
+    const posts = await getPosts();
+    expect(posts).toEqual([]);
   });
 
   it('returns empty list when no posts available', async () => {
     mockListForRepo.mockResolvedValue({ data: [] });
 
-    const issues = await getPosts();
-    expect(issues).toEqual([]);
+    const posts = await getPosts();
+    expect(posts).toEqual([]);
   });
 });
 
@@ -156,9 +156,9 @@ describe('getPost', () => {
   });
 
   it('returns post with expected data', async () => {
-    const issue = await getPost('slug');
+    const posts = await getPost('slug');
 
-    expect(issue).toEqual({
+    expect(posts).toEqual({
       content: '<div>Content</div>',
       reading_time: '1 min',
       slug: 'slug',
@@ -176,7 +176,127 @@ describe('getPost', () => {
   it('returns null when post not found', async () => {
     mockListForRepo.mockResolvedValue({ data: [] });
 
-    const issue = await getPost('slug');
-    expect(issue).toBeNull();
+    const posts = await getPost('slug');
+    expect(posts).toBeNull();
+  });
+});
+
+describe('getPostsByTag', () => {
+  beforeEach(() => {
+    mockListForRepo.mockResolvedValue({
+      data: [
+        {
+          title: 'My Blog Post: Part 1',
+          body: '#header',
+          labels: [
+            {
+              name: 'label1',
+            },
+            {
+              name: 'label2',
+            },
+          ],
+          created_at: '2023-01-01T00:00:00',
+          user: {
+            login: 'username',
+            avatar_url: 'avatar_url',
+          },
+        },
+        {
+          title: 'My Blog Post: Part 1',
+          body: '#header',
+          labels: [
+            {
+              name: 'label2',
+            },
+          ],
+          created_at: '2023-01-01T00:00:00',
+          user: {
+            login: 'username',
+            avatar_url: 'avatar_url',
+          },
+        },
+      ],
+    });
+
+    mockMarkdownToHtml.mockResolvedValue({
+      content: '<div>Content</div>',
+      metadata: {
+        slug: 'slug',
+        summary: 'summary',
+        reading_time: '1 min',
+      },
+    });
+  });
+
+  it('returns all posts with common tag', async () => {
+    const posts = await getPostsByTag('label2');
+
+    expect(posts).toEqual([
+      {
+        content: '<div>Content</div>',
+        reading_time: '1 min',
+        slug: 'slug',
+        summary: 'summary',
+        tags: ['label1', 'label2'],
+        title: 'My Blog Post: Part 1',
+        date: DateTime.fromISO('2023-01-01'),
+        author: {
+          name: 'username',
+          avatar: 'avatar_url',
+        },
+      },
+      {
+        content: '<div>Content</div>',
+        reading_time: '1 min',
+        slug: 'slug',
+        summary: 'summary',
+        tags: ['label2'],
+        title: 'My Blog Post: Part 1',
+        date: DateTime.fromISO('2023-01-01'),
+        author: {
+          name: 'username',
+          avatar: 'avatar_url',
+        },
+      },
+    ]);
+  });
+
+  it('returns one post with tag', async () => {
+    const posts = await getPostsByTag('label2');
+
+    expect(posts).toEqual([
+      {
+        content: '<div>Content</div>',
+        reading_time: '1 min',
+        slug: 'slug',
+        summary: 'summary',
+        tags: ['label1', 'label2'],
+        title: 'My Blog Post: Part 1',
+        date: DateTime.fromISO('2023-01-01'),
+        author: {
+          name: 'username',
+          avatar: 'avatar_url',
+        },
+      },
+      {
+        content: '<div>Content</div>',
+        reading_time: '1 min',
+        slug: 'slug',
+        summary: 'summary',
+        tags: ['label2'],
+        title: 'My Blog Post: Part 1',
+        date: DateTime.fromISO('2023-01-01'),
+        author: {
+          name: 'username',
+          avatar: 'avatar_url',
+        },
+      },
+    ]);
+  });
+
+  it('returns empty when no posts with tag', async () => {
+    const posts = await getPostsByTag('fakeTag');
+    expect(posts).toHaveLength(0);
   });
 });

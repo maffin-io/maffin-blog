@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { render } from '@testing-library/react';
 
-import BlogPage from '@/app/posts/[slug]/page';
+import BlogPage, { generateStaticParams } from '@/app/posts/[slug]/page';
 import * as postsApi from '@/app/api/getPosts';
 
 jest.mock('@/app/api/getPosts', () => ({
@@ -19,7 +19,7 @@ async function resolveComponent(Component: React.FunctionComponent, props: any) 
   return () => ComponentResolved;
 }
 
-describe('BlogPage', () => {
+describe('PostDetailPage', () => {
   beforeEach(() => {
     jest.spyOn(postsApi, 'getPost').mockResolvedValue(null);
   });
@@ -48,5 +48,49 @@ describe('BlogPage', () => {
     await expect(
       () => resolveComponent(BlogPage, { params: { slug: 'My-Blog-Post%3A-Part-1' } }),
     ).rejects.toThrow('NEXT_NOT_FOUND');
+  });
+});
+
+describe('generateStaticParams', () => {
+  it('returns one slug per post', async () => {
+    jest.spyOn(postsApi, 'getPosts').mockResolvedValue([
+      {
+        content: '<div>Content</div>',
+        slug: 'my-blog-post-1',
+        summary: 'Blog post summary TODO',
+        tags: ['label1'],
+        reading_time: '1 min',
+        title: 'My Blog Post 1',
+        date: DateTime.fromISO('2023-01-01'),
+        author: {
+          name: 'Name',
+          avatar: 'https://avatar.image',
+        },
+      },
+      {
+        content: '<div>Content</div>',
+        slug: 'my-blog-post-2',
+        summary: 'Blog post summary TODO',
+        tags: ['label1'],
+        reading_time: '1 min',
+        title: 'My Blog Post 2',
+        date: DateTime.fromISO('2023-01-01'),
+        author: {
+          name: 'Name',
+          avatar: 'https://avatar.image',
+        },
+      },
+    ]);
+
+    const staticParams = await generateStaticParams();
+
+    expect(staticParams).toEqual([
+      {
+        slug: 'my-blog-post-1',
+      },
+      {
+        slug: 'my-blog-post-2',
+      },
+    ]);
   });
 });

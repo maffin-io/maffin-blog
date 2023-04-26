@@ -13,6 +13,7 @@ jobs:
         
     steps:
       - uses: actions/checkout@v3
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -22,8 +23,8 @@ jobs:
       - name: Install dependencies
         run: yarn
 
-      - name: Lint
-        run: yarn lint
+      - name: Build # Runs lint too
+        run: yarn build
 
       - name: Test
         run: yarn test
