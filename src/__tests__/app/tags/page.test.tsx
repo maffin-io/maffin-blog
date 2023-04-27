@@ -9,17 +9,12 @@ jest.mock('@/app/api/getPosts', () => ({
   ...jest.requireActual('@/app/api/getPosts'),
 }));
 
-/**
- * @param {function} Component
- * @param {*} props
- * @returns {Promise<()=>JSX.Element>}
- */
-async function resolveComponent(Component: React.FunctionComponent, props: any) {
-  const ComponentResolved = await Component(props);
+async function resolveComponent(Component: typeof TagsPage): Promise<() => JSX.Element> {
+  const ComponentResolved = await Component();
   return () => ComponentResolved;
 }
 
-describe('HomePage', () => {
+describe('TagsPage', () => {
   it('renders as expected', async () => {
     jest.spyOn(postsApi, 'getPosts').mockResolvedValue([
       {
@@ -30,7 +25,7 @@ describe('HomePage', () => {
       } as Post,
     ]);
 
-    const Component = await resolveComponent(TagsPage, {});
+    const Component = await resolveComponent(TagsPage);
     const { container } = render(<Component />);
 
     expect(container).toMatchSnapshot();

@@ -7,7 +7,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "tsc --noemit && next lint",
     "test": "jest --watchAll=false --coverage"
   },
   "dependencies": {

@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { render } from '@testing-library/react';
 
-import BlogPage, { generateStaticParams } from '@/app/posts/[slug]/page';
+import BlogPage, { generateStaticParams, PostDetailPageProps } from '@/app/posts/[slug]/page';
 import * as postsApi from '@/app/api/getPosts';
 
 jest.mock('@/app/api/getPosts', () => ({
@@ -9,12 +9,10 @@ jest.mock('@/app/api/getPosts', () => ({
   ...jest.requireActual('@/app/api/getPosts'),
 }));
 
-/**
- * @param {function} Component
- * @param {*} props
- * @returns {Promise<()=>JSX.Element>}
- */
-async function resolveComponent(Component: React.FunctionComponent, props: any) {
+async function resolveComponent(
+  Component: typeof BlogPage,
+  props: PostDetailPageProps,
+): Promise<() => JSX.Element> {
   const ComponentResolved = await Component(props);
   return () => ComponentResolved;
 }

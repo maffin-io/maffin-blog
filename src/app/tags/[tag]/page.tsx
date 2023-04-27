@@ -15,8 +15,12 @@ export async function generateStaticParams() {
   }));
 }
 
+export type TagPageProps = {
+  params: { tag: string },
+};
+
 export default async function TagPage(
-  { params: { tag } }: { params: { tag: string } },
+  { params: { tag } }: TagPageProps,
 ): Promise<JSX.Element> {
   const posts = await getPostsByTag(tag);
 

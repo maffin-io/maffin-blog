@@ -16,8 +16,12 @@ export async function generateStaticParams() {
   }));
 }
 
+export type PostDetailPageProps = {
+  params: { slug: string },
+};
+
 export default async function PostDetailPage(
-  { params: { slug } }: { params: { slug: string } },
+  { params: { slug } }: PostDetailPageProps,
 ): Promise<JSX.Element> {
   const post = await getPost(slug);
 
