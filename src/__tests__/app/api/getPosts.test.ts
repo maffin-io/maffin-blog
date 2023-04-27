@@ -116,6 +116,30 @@ describe('getPosts', () => {
     expect(posts).toEqual([]);
   });
 
+  it('ignores drafts', async () => {
+    mockListForRepo.mockResolvedValue({
+      data: [
+        {
+          title: '[draft] My Blog Post: Part 1',
+          body: '#header',
+          labels: [
+            {
+              name: 'label1',
+            },
+          ],
+          created_at: '2023-01-01T00:00:00',
+          user: {
+            login: 'username',
+            avatar_url: 'avatar_url',
+          },
+        },
+      ],
+    });
+
+    const posts = await getPosts();
+    expect(posts).toEqual([]);
+  });
+
   it('returns empty list when no posts available', async () => {
     mockListForRepo.mockResolvedValue({ data: [] });
 

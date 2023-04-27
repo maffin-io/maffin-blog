@@ -26,7 +26,7 @@ export async function getPosts(): Promise<Post[]> {
     headers: {
       accept: 'application/vnd.github+json',
     },
-  })).data.filter(issue => !issue.pull_request);
+  })).data.filter(issue => !issue.pull_request && !issue.title.includes('[draft]'));
 
   return Promise.all(issues.map(async (issue) => {
     if (!issue.body) {
