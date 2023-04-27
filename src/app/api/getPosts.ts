@@ -26,7 +26,7 @@ export async function getPosts(): Promise<Post[]> {
     headers: {
       accept: 'application/vnd.github+json',
     },
-  })).data.filter((issue) => !issue.pull_request);
+  })).data.filter(issue => !issue.pull_request);
 
   return Promise.all(issues.map(async (issue) => {
     if (!issue.body) {
@@ -40,7 +40,8 @@ export async function getPosts(): Promise<Post[]> {
       title: issue.title,
       summary: metadata.summary,
       reading_time: metadata.reading_time,
-      tags: issue.labels.map((label) => label.name),
+      // @ts-ignore
+      tags: issue.labels.map(label => label.name),
       content: htmlContent,
       author: {
         name: issue.user?.name || issue.user?.login,
@@ -52,5 +53,10 @@ export async function getPosts(): Promise<Post[]> {
 
 export async function getPost(slug: string): Promise<null | Post> {
   const posts = await getPosts();
-  return posts.find((post) => post.slug === slug) || null;
+  return posts.find(post => post.slug === slug) || null;
+}
+
+export async function getPostsByTag(tag: string): Promise<Post[]> {
+  const posts = await getPosts();
+  return posts.filter(post => post.tags.includes(tag));
 }

@@ -5,10 +5,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import '@/css/prism.css';
-import { getPost } from '@/app/api/getPosts';
+import { getPosts, getPost } from '@/app/api/getPosts';
 import Tag from '@/components/Tag';
 
-export default async function BlogPage(
+export async function generateStaticParams() {
+  const posts = await getPosts();
+
+  return posts.map((post) => ({
+    slug: post.slug,
+  }));
+}
+
+export default async function PostDetailPage(
   { params: { slug } }: { params: { slug: string } },
 ): Promise<JSX.Element> {
   const post = await getPost(slug);
@@ -26,7 +34,7 @@ export default async function BlogPage(
               <div>
                 <dt className="sr-only">Published on</dt>
                 <dd className="text-base font-medium leading-6 text-gray-500 dark:text-gray-400">
-                  <time dateTime={post.date.toISODate()}>
+                  <time dateTime={post.date.toISODate() || undefined}>
                     {post.date.toLocaleString(DateTime.DATE_MED)}
                   </time>
                 </dd>
