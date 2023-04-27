@@ -19,13 +19,8 @@ jest.mock('@/components/PostsList', () => {
   return PostsList;
 });
 
-/**
- * @param {function} Component
- * @param {*} props
- * @returns {Promise<()=>JSX.Element>}
- */
-async function resolveComponent(Component: React.FunctionComponent, props: any) {
-  const ComponentResolved = await Component(props);
+async function resolveComponent(Component: typeof HomePage): Promise<() => JSX.Element> {
+  const ComponentResolved = await Component();
   return () => ComponentResolved;
 }
 
@@ -44,7 +39,7 @@ describe('HomePage', () => {
       } as Post,
     ]);
 
-    const Component = await resolveComponent(HomePage, {});
+    const Component = await resolveComponent(HomePage);
     const { container } = render(<Component />);
 
     expect(container).toMatchSnapshot();

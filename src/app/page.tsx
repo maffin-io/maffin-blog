@@ -2,7 +2,7 @@ import PostsList from '@/components/PostsList';
 import Typing from '@/components/Typing';
 import { getPosts } from '@/app/api/getPosts';
 
-export default async function HomePage() {
+export default async function HomePage(): Promise<JSX.Element> {
   const posts = await getPosts();
 
   return (

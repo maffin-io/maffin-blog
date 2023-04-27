@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`HomePage renders as expected 1`] = `
+exports[`TagsPage renders as expected 1`] = `
 <div>
   <div
     class="divide-y divide-gray-200"

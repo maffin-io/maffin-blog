@@ -1,7 +1,7 @@
 import { DateTime } from 'luxon';
 import { render } from '@testing-library/react';
 
-import TagPage, { generateStaticParams } from '@/app/tags/[tag]/page';
+import TagPage, { generateStaticParams, TagPageProps } from '@/app/tags/[tag]/page';
 import * as postsApi from '@/app/api/getPosts';
 import type { Post } from '@/app/api/getPosts';
 
@@ -20,7 +20,10 @@ jest.mock('@/components/PostsList', () => {
   return PostsList;
 });
 
-async function resolveComponent(Component: React.FunctionComponent, props: any) {
+async function resolveComponent(
+  Component: typeof TagPage,
+  props: TagPageProps,
+): Promise<() => JSX.Element> {
   const ComponentResolved = await Component(props);
   return () => ComponentResolved;
 }

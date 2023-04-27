@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import Link from 'next/link';
+import Script from 'next/script';
 
 import Logo from '@/assets/images/logo.png';
 import Footer from '@/components/Footer';
@@ -83,6 +84,19 @@ export default function RootLayout({
             <Footer />
           </div>
         </div>
+        <Script id="google-analytics" strategy="afterInteractive">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+
+            gtag('config', 'G-T24M4ZNYKM');
+          `}
+        </Script>
+        <Script
+          src="https://www.googletagmanager.com/gtag/js?id=G-T24M4ZNYKM"
+          strategy="afterInteractive"
+        />
       </body>
     </html>
   );
