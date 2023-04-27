@@ -34,6 +34,8 @@ jobs:
         node-version: [16.17.0]
 
     steps:
+      - uses: actions/checkout@v3
+
       - name: CI build
         uses: ./.github/workflows/ci.yml
 
