@@ -23,7 +23,7 @@
     "rehype-prism-plus": "^1.5.1",
     "rehype-raw": "^6.1.1",
     "rehype-stringify": "^9.0.3",
-    "remark": "^14.0.2",
+    "remark": "^14.0.3",
     "remark-code-title": "^0.2.5",
     "remark-extract-frontmatter": "^3.2.0",
     "remark-frontmatter": "^4.0.1",
