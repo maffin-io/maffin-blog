@@ -33,7 +33,7 @@
     "remark-rehype": "^10.1.0",
     "toml": "^3.0.0",
     "typescript": "5.0.4",
-    "unist-util-visit": "^4.1.2"
+    "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
     "@types/node": "20.2.1",
