@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "@types/node": "20.2.1",
-    "@types/react": "18.2.6",
+    "@types/react": "18.2.17",
     "@types/react-dom": "18.2.4",
     "@octokit/types": "^9.2.2",
     "@tailwindcss/typography": "^0.5.9",
