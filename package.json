@@ -11,7 +11,7 @@
     "test": "jest --watchAll=false --coverage"
   },
   "dependencies": {
-    "@fontsource/inter": "^4.5.15",
+    "@fontsource/inter": "^5.0.6",
     "eslint": "8.40.0",
     "eslint-config-next": "13.4.2",
     "luxon": "^3.3.0",
