@@ -1100,10 +1100,10 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.40.0.tgz#3ba73359e11f5a7bd3e407f70b3528abfae69cec"
   integrity sha512-ElyB54bJIhXQYVKjDSvCkPO1iU1tSAeVQJbllWJq1XQSmmA4dgFk8CbiBGpiOPxleE48vDogxCtmMYku4HSVLA==
 
-"@fontsource/inter@^4.5.15":
-  version "4.5.15"
-  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-4.5.15.tgz#eed1873d68755d3b52d6fcfcfa3493118430a512"
-  integrity sha512-FzleM9AxZQK2nqsTDtBiY0PMEVWvnKnuu2i09+p6DHvrHsuucoV2j0tmw+kAT3L4hvsLdAIDv6MdGehsPIdT+Q==
+"@fontsource/inter@^5.0.7":
+  version "5.0.7"
+  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-5.0.7.tgz#10ba651cd0c809bbd0a5a253b324a3eb259e99da"
+  integrity sha512-PL6oNXuPyeidLd09U02RpQPemc1/KvvwJXICNkcmKm8bNqVL+deol6gPilV712ZfT5DpjLxmJ2yEhJS6Hi5n3Q==
 
 "@humanwhocodes/config-array@^0.11.8":
   version "0.11.8"
