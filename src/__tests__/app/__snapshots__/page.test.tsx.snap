@@ -16,23 +16,6 @@ exports[`HomePage renders page with posts as expected 1`] = `
       <p
         class="overflow-hidden whitespace-nowrap font-mono text-lg leading-7 text-gray-500 animate-typing"
       >
-        <span>
-          everything
-           
-        </span>
-        <span
-          class="text-emerald-500"
-        >
-          <a
-            href="/tags/travel"
-          >
-            travel
-          </a>
-        </span>
-        <span>
-          ,
-           
-        </span>
         <span
           class="text-sky-500"
         >

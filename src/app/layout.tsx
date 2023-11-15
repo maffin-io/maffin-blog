@@ -10,7 +10,7 @@ import GithubIcon from '@/components/GithubIcon';
 
 export const metadata = {
   title: 'Maffin Blog',
-  description: 'A bit of everything engineering, travel and finance',
+  description: 'A bit of engineering and finance',
   icons: {
     icon: [
       {
@@ -30,7 +30,7 @@ export const metadata = {
   category: ['technology', 'travel', 'finance'],
   openGraph: {
     title: 'Maffin Blog',
-    description: 'A bit of everything engineering, travel and finance',
+    description: 'A bit of engineering and finance',
     url: 'https://blog.maffin.io',
     siteName: 'Maffin Blog',
     locale: 'en-US',
