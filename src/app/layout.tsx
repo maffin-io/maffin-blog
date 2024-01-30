@@ -40,8 +40,8 @@ export const metadata = {
 
 const headerNavLinks = [
   { href: '/', title: 'Blog' },
-  { href: '/tags', title: 'Tags' },
   { href: '/docs', title: 'Docs' },
+  { href: '/tags', title: 'Tags' },
 ];
 
 export default function RootLayout({

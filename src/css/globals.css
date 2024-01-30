@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .nav-section {
+    @apply text-sm font-medium leading-5 xl:col-start-1 xl:row-start-2;
+  }
+
+  .sidenav {
+    @apply prose pt-4;
+    @apply xl:mt-10 xl:pb-8;
+    @apply xl:sticky xl:top-14;
+    @apply xl:border-r-[1px] border-r-gray-200 dark:border-r-gray-700;
+  }
+
+  .heading {
+    @apply font-extrabold tracking-tight text-gray-900 dark:text-gray-100;
+    @apply text-3xl md:text-5xl sm:text-4xl;
+    @apply leading-9 md:leading-14 sm:leading-10;
+  }
+}
