@@ -2009,10 +2009,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/luxon@^3.3.4":
-  version "3.3.4"
-  resolved "https://registry.yarnpkg.com/@types/luxon/-/luxon-3.3.4.tgz#cda5c0709a0c4c01ba059c40e62d76610479049a"
-  integrity sha512-H9OXxv4EzJwE75aTPKpiGXJq+y4LFxjpsdgKwSmr503P5DkWc3AG7VAFYrFNVvqemT5DfgZJV9itYhqBHSGujA==
+"@types/luxon@^3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@types/luxon/-/luxon-3.4.2.tgz#e4fc7214a420173cea47739c33cdf10874694db7"
+  integrity sha512-TifLZlFudklWlMBfhubvgqTXRzLDI5pCbGa4P8a3wPyUQSW+1xQ5eDsreP9DWHX3tjq1ke96uYG/nwundroWcA==
 
 "@types/mdast@*", "@types/mdast@^3.0.0":
   version "3.0.11"
