@@ -18,11 +18,32 @@ export type Post = {
 };
 
 export async function getPosts(): Promise<Post[]> {
+  const posts = await get();
+  return posts.filter(p => !p.tags.includes('docs'));
+}
+
+export async function getPost(slug: string): Promise<null | Post> {
+  const posts = await get();
+  return posts.find(post => post.slug === slug) || null;
+}
+
+export async function getPostsByTag(tag: string): Promise<Post[]> {
+  const posts = await get(tag);
+  return posts;
+}
+
+export async function getDocs(): Promise<Post[]> {
+  const posts = await get('docs');
+  return posts;
+}
+
+async function get(labels?: string): Promise<Post[]> {
   const octokit = new Octokit();
   const issues = (await octokit.rest.issues.listForRepo({
     owner: 'maffin-io',
     repo: 'maffin-blog',
     creator: 'argaen',
+    labels,
     headers: {
       accept: 'application/vnd.github+json',
     },
@@ -49,14 +70,4 @@ export async function getPosts(): Promise<Post[]> {
       },
     };
   }));
-}
-
-export async function getPost(slug: string): Promise<null | Post> {
-  const posts = await getPosts();
-  return posts.find(post => post.slug === slug) || null;
-}
-
-export async function getPostsByTag(tag: string): Promise<Post[]> {
-  const posts = await getPosts();
-  return posts.filter(post => post.tags.includes(tag));
 }

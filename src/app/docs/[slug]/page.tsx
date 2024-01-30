@@ -3,36 +3,36 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 
 import '@/css/prism.css';
-import { getPosts, getPost } from '@/app/api/getPosts';
+import { getDocs, getPost } from '@/app/api/getPosts';
 import PostDetail from '@/components/PostDetail';
 
 export async function generateStaticParams() {
-  const posts = await getPosts();
+  const posts = await getDocs();
 
   return posts.map((post) => ({
     slug: post.slug,
   }));
 }
 
-export type PostDetailPageProps = {
+export type DocsDetailPageProps = {
   params: { slug: string },
 };
 
 export async function generateMetadata(
-  { params: { slug } }: PostDetailPageProps,
+  { params: { slug } }: DocsDetailPageProps,
 ): Promise<Metadata> {
   const post = await getPost(slug);
 
   return {
-    title: `Maffin Blog - ${post?.title}`,
+    title: `Maffin Docs - ${post?.title}`,
     description: post?.summary,
     keywords: post?.tags,
     authors: [{ name: post?.author.name }],
   };
 }
 
-export default async function PostDetailPage(
-  { params: { slug } }: PostDetailPageProps,
+export default async function DocsDetailPage(
+  { params: { slug } }: DocsDetailPageProps,
 ): Promise<JSX.Element> {
   const post = await getPost(slug);
 
