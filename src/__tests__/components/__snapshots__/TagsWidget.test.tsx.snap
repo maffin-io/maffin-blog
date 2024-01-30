@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TagsWidget renders as expected when valid tags 1`] = `
+<div>
+  <div>
+    <div
+      class="py-4 xl:py-8"
+    >
+      <h2
+        class="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400"
+      >
+        Tags
+      </h2>
+      <div
+        class="flex flex-wrap"
+      >
+        <div
+          data-testid="Tag"
+        />
+        <div
+          data-testid="Tag"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;

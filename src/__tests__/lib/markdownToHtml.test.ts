@@ -40,6 +40,16 @@ describe('markdownToHtml', () => {
     );
   });
 
+  it('adds target blank to full URLs', async () => {
+    const parsed = await markdownToHtml(
+      '[a](https://a.com) [b](/b)',
+    );
+
+    expect(parsed.content).toEqual(
+      '<p><a href="https://a.com" rel="nofollow" target="_blank">a</a> <a href="/b">b</a></p>',
+    );
+  });
+
   it('parses frontmatter metadata in toml', async () => {
     const parsed = await markdownToHtml(
       '+++\n'
