@@ -1,0 +1,46 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TableOfContents collects headings and renders as expected 1`] = `
+<div>
+  <ul
+    class="list-none pl-0"
+  >
+    <li
+      class="pl-0"
+    >
+      <a
+        href="#id-1"
+      >
+        H1
+      </a>
+    </li>
+    <li
+      class="pl-3"
+    >
+      <a
+        href="#id-2"
+      >
+        H2
+      </a>
+    </li>
+  </ul>
+</div>
+`;
+
+exports[`TableOfContents works ok when no id 1`] = `
+<div>
+  <ul
+    class="list-none pl-0"
+  >
+    <li
+      class="pl-0"
+    >
+      <a
+        href="#"
+      >
+        h
+      </a>
+    </li>
+  </ul>
+</div>
+`;

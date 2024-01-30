@@ -5,12 +5,12 @@ import Script from 'next/script';
 import Logo from '@/assets/images/logo.png';
 import Footer from '@/components/Footer';
 import '@/css/globals.css';
-import '@fontsource/inter/variable-full.css';
+import '@fontsource/inter';
 import GithubIcon from '@/components/GithubIcon';
 
 export const metadata = {
   title: 'Maffin Blog',
-  description: 'A bit of engineering and finance',
+  description: 'maffin.io\'s engineering and finance',
   icons: {
     icon: [
       {
@@ -27,11 +27,11 @@ export const metadata = {
     apple: '/favicon/apple-touch-icon.png',
 
   },
-  category: ['technology', 'travel', 'finance'],
+  category: ['technology', 'finance'],
+  metadataBase: new URL('https://blog.maffin.io'),
   openGraph: {
     title: 'Maffin Blog',
-    description: 'A bit of engineering and finance',
-    url: 'https://blog.maffin.io',
+    description: 'maffin.io\'s engineering and finance',
     siteName: 'Maffin Blog',
     locale: 'en-US',
     type: 'website',
@@ -41,7 +41,7 @@ export const metadata = {
 const headerNavLinks = [
   { href: '/', title: 'Blog' },
   { href: '/tags', title: 'Tags' },
-  { href: '/about', title: 'About' },
+  { href: '/docs', title: 'Docs' },
 ];
 
 export default function RootLayout({

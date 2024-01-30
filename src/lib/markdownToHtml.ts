@@ -7,6 +7,7 @@ import remarkFrontMatter from 'remark-frontmatter';
 import remarkExtractFrontMatter from 'remark-extract-frontmatter';
 import rehypeCodeTitles from 'rehype-code-titles';
 import rehypePrismPlus from 'rehype-prism-plus';
+import rehypeSlug from 'rehype-slug';
 import rehypeRaw from 'rehype-raw';
 import rehypeStringify from 'rehype-stringify';
 
@@ -26,6 +27,7 @@ export default async function markdownToHtml(
     .use(remarkGfm) // Github flavored markdown
     .use(remarkRehype, { allowDangerousHtml: true })
     .use(rehypeCodeTitles)
+    .use(rehypeSlug)
     .use(rehypePrismPlus)
     // This is so we can parse <img> tags coming from Github markdown
     // keep it here! rehypeprismplus code lines don't work if they are after

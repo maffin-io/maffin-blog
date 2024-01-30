@@ -4,8 +4,8 @@ import { render } from '@testing-library/react';
 import BlogPage, {
   generateStaticParams,
   generateMetadata,
-  PostDetailPageProps,
-} from '@/app/posts/[slug]/page';
+  DocsDetailPageProps,
+} from '@/app/docs/[slug]/page';
 import PostDetail from '@/components/PostDetail';
 import * as postsApi from '@/app/api/getPosts';
 
@@ -20,13 +20,13 @@ jest.mock('@/components/PostDetail', () => jest.fn(
 
 async function resolveComponent(
   Component: typeof BlogPage,
-  props: PostDetailPageProps,
+  props: DocsDetailPageProps,
 ): Promise<() => JSX.Element> {
   const ComponentResolved = await Component(props);
   return () => ComponentResolved;
 }
 
-describe('PostDetailPage', () => {
+describe('DocsDetailPage', () => {
   beforeEach(() => {
     jest.spyOn(postsApi, 'getPost').mockResolvedValue(null);
   });
@@ -34,11 +34,11 @@ describe('PostDetailPage', () => {
   it('renders post with content and title', async () => {
     const post = {
       content: '<div>Content</div>',
-      slug: 'my-blog-post',
-      summary: 'Blog post summary TODO',
-      tags: ['label1'],
+      slug: 'my-doc',
+      summary: 'Doc summary TODO',
+      tags: ['docs'],
       reading_time: '1 min',
-      title: 'My Blog Post',
+      title: 'My Doc',
       date: DateTime.fromISO('2023-01-01'),
       author: {
         name: 'Name',
@@ -46,7 +46,7 @@ describe('PostDetailPage', () => {
       },
     };
     jest.spyOn(postsApi, 'getPost').mockResolvedValue(post);
-    const Component = await resolveComponent(BlogPage, { params: { slug: 'My-Blog-Post' } });
+    const Component = await resolveComponent(BlogPage, { params: { slug: 'My-Doc' } });
 
     render(<Component />);
 
@@ -55,21 +55,21 @@ describe('PostDetailPage', () => {
 
   it('returns 404 when slug not found', async () => {
     await expect(
-      () => resolveComponent(BlogPage, { params: { slug: 'My-Blog-Post%3A-Part-1' } }),
+      () => resolveComponent(BlogPage, { params: { slug: 'My-Doc%3A-Part-1' } }),
     ).rejects.toThrow('NEXT_NOT_FOUND');
   });
 });
 
 describe('generateStaticParams', () => {
   it('returns one slug per post', async () => {
-    jest.spyOn(postsApi, 'getPosts').mockResolvedValue([
+    jest.spyOn(postsApi, 'getDocs').mockResolvedValue([
       {
         content: '<div>Content</div>',
-        slug: 'my-blog-post-1',
-        summary: 'Blog post summary TODO',
-        tags: ['label1'],
+        slug: 'my-doc-1',
+        summary: 'Doc summary TODO',
+        tags: ['docs'],
         reading_time: '1 min',
-        title: 'My Blog Post 1',
+        title: 'My Doc 1',
         date: DateTime.fromISO('2023-01-01'),
         author: {
           name: 'Name',
@@ -78,11 +78,11 @@ describe('generateStaticParams', () => {
       },
       {
         content: '<div>Content</div>',
-        slug: 'my-blog-post-2',
-        summary: 'Blog post summary TODO',
-        tags: ['label1'],
+        slug: 'my-doc-2',
+        summary: 'Doc summary TODO',
+        tags: ['docs'],
         reading_time: '1 min',
-        title: 'My Blog Post 2',
+        title: 'My Doc 2',
         date: DateTime.fromISO('2023-01-01'),
         author: {
           name: 'Name',
@@ -95,10 +95,10 @@ describe('generateStaticParams', () => {
 
     expect(staticParams).toEqual([
       {
-        slug: 'my-blog-post-1',
+        slug: 'my-doc-1',
       },
       {
-        slug: 'my-blog-post-2',
+        slug: 'my-doc-2',
       },
     ]);
   });
@@ -108,11 +108,11 @@ describe('generateMetadata', () => {
   it('generates metadata as expected', async () => {
     const post = {
       content: '<div>Content</div>',
-      slug: 'my-blog-post',
-      summary: 'Blog post summary TODO',
-      tags: ['label1'],
+      slug: 'my-doc',
+      summary: 'Doc summary TODO',
+      tags: ['docs'],
       reading_time: '1 min',
-      title: 'My Blog Post',
+      title: 'My Doc',
       date: DateTime.fromISO('2023-01-01'),
       author: {
         name: 'Name',
@@ -121,10 +121,10 @@ describe('generateMetadata', () => {
     };
     jest.spyOn(postsApi, 'getPost').mockResolvedValue(post);
 
-    const metadata = await generateMetadata({ params: { slug: 'my-blog-post' } });
+    const metadata = await generateMetadata({ params: { slug: 'my-doc' } });
 
     expect(metadata).toEqual({
-      title: 'Maffin Blog - My Blog Post',
+      title: 'Maffin Docs - My Doc',
       description: post.summary,
       keywords: post.tags,
       authors: [{ name: post.author.name }],

@@ -6,6 +6,13 @@ module.exports = {
   content: [
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
   ],
+  // Tailwind optimises which classes are brought in. This breaks
+  // dynamic behavior in some cases.
+  safelist: [
+    {
+      pattern: /pl-.*/,
+    },
+  ],
   theme: {
     extend: {
       spacing: {

@@ -5,7 +5,7 @@ describe('markdownToHtml', () => {
     const parsed = await markdownToHtml('# hello world');
 
     expect(parsed).toEqual({
-      content: '<h1>hello world</h1>',
+      content: '<h1 id="hello-world">hello world</h1>',
       metadata: {},
     });
   });
@@ -49,7 +49,7 @@ describe('markdownToHtml', () => {
     );
 
     expect(parsed).toEqual({
-      content: '<h1>hello world</h1>',
+      content: '<h1 id="hello-world">hello world</h1>',
       metadata: {
         slug: 'my-slug',
       },

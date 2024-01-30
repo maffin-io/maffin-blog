@@ -1,13 +1,18 @@
 import { DateTime } from 'luxon';
 
-import { getPosts, getPostsByTag, getPost } from '@/app/api/getPosts';
+import {
+  getPosts,
+  getDocs,
+  getPostsByTag,
+  getPost,
+} from '@/app/api/getPosts';
 
 const mockListForRepo = jest.fn();
 jest.mock('octokit', () => ({
   Octokit: jest.fn(() => ({
     rest: {
       issues: {
-        listForRepo: () => mockListForRepo(),
+        listForRepo: (args: any) => mockListForRepo(args),
       },
     },
   })),
@@ -140,11 +145,44 @@ describe('getPosts', () => {
     expect(posts).toEqual([]);
   });
 
+  it('ignores #docs', async () => {
+    mockListForRepo.mockResolvedValue({
+      data: [
+        {
+          title: '[draft] My Blog Post: Part 1',
+          body: '#header',
+          labels: [
+            {
+              name: 'docs',
+            },
+          ],
+          created_at: '2023-01-01T00:00:00',
+          user: {
+            login: 'username',
+            avatar_url: 'avatar_url',
+          },
+        },
+      ],
+    });
+
+    const posts = await getPosts();
+    expect(posts).toEqual([]);
+  });
+
   it('returns empty list when no posts available', async () => {
     mockListForRepo.mockResolvedValue({ data: [] });
 
     const posts = await getPosts();
     expect(posts).toEqual([]);
+  });
+});
+
+describe('getDocs', () => {
+  it('retrieves posts with #docs label only', async () => {
+    await getDocs();
+    expect(mockListForRepo).toBeCalledWith(expect.objectContaining({
+      labels: 'docs',
+    }));
   });
 });
 
@@ -253,6 +291,10 @@ describe('getPostsByTag', () => {
     });
   });
 
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
   it('returns all posts with common tag', async () => {
     const posts = await getPostsByTag('label2');
 
@@ -320,7 +362,9 @@ describe('getPostsByTag', () => {
   });
 
   it('returns empty when no posts with tag', async () => {
-    const posts = await getPostsByTag('fakeTag');
-    expect(posts).toHaveLength(0);
+    await getPostsByTag('fakeTag');
+    expect(mockListForRepo).toBeCalledWith(expect.objectContaining({
+      labels: 'fakeTag',
+    }));
   });
 });
