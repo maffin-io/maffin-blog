@@ -90,11 +90,11 @@ export default function RootLayout({
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-T24M4ZNYKM');
+            gtag('config', '${process.env.NEXT_PUBLIC_GTAG_ID}');
           `}
         </Script>
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-T24M4ZNYKM"
+          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GTAG_ID}`}
           strategy="afterInteractive"
         />
       </body>
