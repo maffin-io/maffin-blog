@@ -41,7 +41,7 @@
     "@octokit/types": "^12.3.0",
     "@tailwindcss/typography": "^0.5.10",
     "@testing-library/react": "^14.2.0",
-    "@types/jest": "^29.5.8",
+    "@types/jest": "^29.5.11",
     "@types/luxon": "^3.4.2",
     "@types/node": "20.11.10",
     "@types/react": "18.2.37",
