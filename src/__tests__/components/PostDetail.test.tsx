@@ -31,23 +31,4 @@ describe('PostDetailTest', () => {
 
     expect(container).toMatchSnapshot();
   });
-
-  it('renders doc as expected', async () => {
-    const post = {
-      content: '<div>Content</div>',
-      slug: 'my-doc',
-      summary: 'Doc summary TODO',
-      tags: ['docs'],
-      reading_time: '1 min',
-      title: 'My Doc',
-      date: DateTime.fromISO('2023-01-01'),
-      author: {
-        name: 'Name',
-        avatar: 'https://avatar.image',
-      },
-    } as Post;
-    const { container } = render(<PostDetail post={post} />);
-
-    expect(container).toMatchSnapshot();
-  });
 });

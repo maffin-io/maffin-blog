@@ -40,7 +40,6 @@ export const metadata = {
 
 const headerNavLinks = [
   { href: '/', title: 'Blog' },
-  { href: '/docs', title: 'Docs' },
   { href: '/tags', title: 'Tags' },
 ];
 

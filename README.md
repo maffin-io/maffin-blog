@@ -42,12 +42,6 @@ If you want to see the magic of server rendering, check it with `yarn build`. It
 Route (app)                                    Size     First Load JS
 ┌ ○ /                                          180 B          91.3 kB
 ├ ○ /_not-found                                885 B          85.2 kB
-├ ○ /docs                                      195 B          91.3 kB
-├ ● /docs/[slug]                               195 B          91.3 kB
-├   ├ /docs/commodities
-├   ├ /docs/transactions
-├   ├ /docs/overview
-├   └ /docs/accounts
 ├ ● /posts/[slug]                              195 B          91.3 kB
 ├   ├ /posts/gapi-authentication-nextjs
 ├   ├ /posts/static-server-rendering-nextjs

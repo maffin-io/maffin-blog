@@ -36,16 +36,11 @@ export default function PostDetail(
             <div className="nav-section">
               <TagsWidget tags={post.tags} />
             </div>
-            {
-              !post.tags.includes('docs')
-              && (
-                <div className="nav-section pt-4 xl:pt-8">
-                  <Link href="/">
-                    &larr; Back to the blog
-                  </Link>
-                </div>
-              )
-            }
+            <div className="nav-section pt-4 xl:pt-8">
+              <Link href="/">
+                &larr; Back to the blog
+              </Link>
+            </div>
           </div>
           <div className="xl:col-span-3 xl:row-span-2 xl:pb-0">
             <div className="prose prose-img:mx-auto max-w-none pt-10 pb-8 dark:prose-dark">
