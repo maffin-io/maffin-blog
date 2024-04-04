@@ -19,7 +19,7 @@ export type Post = {
 
 export async function getPosts(): Promise<Post[]> {
   const posts = await get();
-  return posts.filter(p => !p.tags.includes('docs'));
+  return posts;
 }
 
 export async function getPost(slug: string): Promise<null | Post> {
@@ -29,11 +29,6 @@ export async function getPost(slug: string): Promise<null | Post> {
 
 export async function getPostsByTag(tag: string): Promise<Post[]> {
   const posts = await get(tag);
-  return posts;
-}
-
-export async function getDocs(): Promise<Post[]> {
-  const posts = await get('docs');
   return posts;
 }
 

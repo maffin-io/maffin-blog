@@ -11,7 +11,6 @@ export default function TagsWidget({ tags }: TagsWidgetProps): JSX.Element {
     <div>
       {
         tags
-        && !tags.includes('docs')
         && (
           <div className="py-4 xl:py-8">
             <h2 className="text-xs uppercase tracking-wide text-gray-500 dark:text-gray-400">

@@ -13,11 +13,6 @@ describe('TagsWidget', () => {
     expect(Tag).toBeCalledTimes(0);
   });
 
-  it('is empty when "docs" in the tags', () => {
-    render(<TagsWidget tags={['a', 'b', 'docs']} />);
-    expect(Tag).toBeCalledTimes(0);
-  });
-
   it('renders as expected when valid tags', () => {
     const { container } = render(<TagsWidget tags={['a', 'b']} />);
     expect(Tag).toBeCalledTimes(2);
