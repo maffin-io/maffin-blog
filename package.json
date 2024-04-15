@@ -16,7 +16,7 @@
     "eslint": "8.57.0",
     "eslint-config-next": "13.4.18",
     "luxon": "^3.4.4",
-    "next": "14.1.0",
+    "next": "14.2.1",
     "next-sitemap": "^4.2.3",
     "octokit": "^3.1.2",
     "react": "18.2.0",
