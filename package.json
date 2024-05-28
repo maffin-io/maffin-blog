@@ -41,7 +41,7 @@
   },
   "devDependencies": {
     "@octokit/types": "^12.3.0",
-    "@tailwindcss/typography": "^0.5.10",
+    "@tailwindcss/typography": "^0.5.13",
     "@testing-library/react": "^15.0.7",
     "@types/jest": "^29.5.12",
     "@types/luxon": "^3.4.2",
